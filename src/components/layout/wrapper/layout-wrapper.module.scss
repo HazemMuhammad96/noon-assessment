@@ -1,0 +1,22 @@
+@use "../../../assets/styles" as *;
+
+.layoutWrapper {
+
+}
+
+.layoutWrapper .navContainer {
+  @include centered;
+  position: fixed;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+
+  @include screen-md {
+    top: 0;
+    bottom: unset;
+  }
+}
+
+.content {
+  padding-bottom: 84px;
+}

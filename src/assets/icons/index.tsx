@@ -1,2 +1,6 @@
-export { Home3 as HomeIcon } from "iconsax-react";
-// export
+export {
+    Home3 as HomeIcon,
+    Save2 as SaveIcon,
+    SaveAdd as SaveAddIcon,
+    SaveMinus as SaveRemoveIcon,
+} from "iconsax-react";

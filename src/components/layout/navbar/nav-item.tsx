@@ -1,10 +1,16 @@
 import Link from "next/link";
+import styles from "./navbar.module.scss";
 
 export default function NavItem(props: NavItemProps) {
     return (
-        <Link href={props.path}>
+        <Link
+            aria-selected={props.selected}
+            className={styles.navItem}
+            href={props.path}
+            onClick={props.onClick}
+        >
             <span>{props.icon}</span>
-            <span>{props.label}</span>
+            <div>{props.label}</div>
         </Link>
     );
 }
