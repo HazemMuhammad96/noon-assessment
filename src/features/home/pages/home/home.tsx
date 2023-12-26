@@ -6,9 +6,14 @@ export default function HomePage() {
 
     return (
         <main>
-            <ul>
+            <ul
+                style={{
+                    marginInline: "auto",
+                    maxWidth: "650px",
+                }}
+            >
                 {posts.map((post) => (
-                    <li>
+                    <li key={post.id}>
                         <PostCard post={post} onLikeClicked={() => {}} />
                     </li>
                 ))}
