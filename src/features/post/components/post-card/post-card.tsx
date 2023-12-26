@@ -1,29 +1,29 @@
 import styles from "./post-card.module.scss";
 import type { PostCardProps } from "./types";
-import LikeButton from "./like-button";
+import SaveButton from "./save-button";
+import UserInformation from "@features/post/components/post-card/user-information";
+import PostBody from "@features/post/components/post-card/post-body";
 
 export default function PostCard({ post }: PostCardProps) {
     return (
         <div className={styles.postCard}>
-            <div>
-                <img
-                    src={post.user.profilePicture}
-                    alt={`${post.user.name}'s profile picture`}
-                />
-                <p>{post.user.name}</p>
-            </div>
-            <div>
+            <UserInformation user={post.user} />
+            <div className={styles.imageSection}>
                 <img src={post.image} alt={post.imageAlt} />
+                <div className={styles.imageInformationShadow} />
                 <p>{post.title}</p>
-                <p>{post.formattedPrice}</p>
-                <LikeButton liked={post.isLiked} onClick={() => {}} />
+                <strong>{post.formattedPrice}</strong>
+                <SaveButton
+                    liked={post.isLiked}
+                    count={post.likeCount}
+                    onClick={() => {}}
+                />
             </div>
-            <div>{post.likeCount}</div>
-            <p>{post.body}</p>
-            <p>
+            <PostBody body={post.body} />
+            <button className="pt-3 mb-5 text-primary">
                 View {post.commentCount}{" "}
                 {post.commentCount === 1 ? "comment" : "comments"}
-            </p>
+            </button>
         </div>
     );
 }

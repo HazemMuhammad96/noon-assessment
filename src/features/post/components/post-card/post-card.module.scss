@@ -1,0 +1,50 @@
+$inline-padding: 12px;
+
+.postCard {
+  border-bottom: 1px solid rgba(122, 119, 104, 0.35);
+
+  & > *:not(.imageSection) {
+    padding-inline: $inline-padding;
+  }
+}
+
+.imageSection {
+  display: grid;
+  grid-template-columns: $inline-padding 1fr auto $inline-padding;
+  grid-template-rows: 1fr auto auto;
+  color: #ececec;
+
+  img {
+    grid-column: 1/5;
+    grid-row: 1/4;
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+  }
+
+  p {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+
+  strong {
+    grid-column: 2/3;
+    grid-row: 3/4;
+    margin-bottom: 12px;
+  }
+
+  [aria-label="likes"] {
+    grid-column: 3/4;
+    grid-row: 2/4;
+    margin-inline-start: $inline-padding;
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: 12px;
+  }
+
+  .imageInformationShadow {
+    grid-column: 1/5;
+    grid-row: 1/4;
+    background: linear-gradient(0deg, rgba(66, 62, 0, 0.8) 0%, rgba(255, 255, 255, 0) 50%);
+  }
+}

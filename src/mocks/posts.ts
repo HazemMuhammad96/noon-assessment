@@ -1,6 +1,10 @@
 import { Post, User } from "@features/post";
 
-const user1 = new User("tracymcgrady", "https://picsum.photos/seed/2/200/300");
+const user1 = new User(
+    1,
+    "tracymcgrady",
+    "https://picsum.photos/seed/2/200/300"
+);
 
 const mockPosts = [
     new Post(
@@ -12,7 +16,7 @@ const mockPosts = [
         "iPhone case",
         12,
         false,
-        32,
+        111,
         230
     ),
     new Post(
@@ -23,7 +27,7 @@ const mockPosts = [
         "https://picsum.photos/seed/1/200/300",
         "iPhone case",
         12,
-        false,
+        true,
         32,
         230
     ),
@@ -47,7 +51,7 @@ const mockPosts = [
         "https://picsum.photos/seed/1/200/300",
         "iPhone case",
         12,
-        false,
+        true,
         32,
         230
     ),
@@ -95,7 +99,7 @@ const mockPosts = [
         "https://picsum.photos/seed/1/200/300",
         "iPhone case",
         12,
-        false,
+        true,
         32,
         230
     ),
