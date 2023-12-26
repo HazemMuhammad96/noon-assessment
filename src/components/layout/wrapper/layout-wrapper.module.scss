@@ -1,22 +1,42 @@
 @use "../../../assets/styles" as *;
 
-.layoutWrapper {
+$nav-height: 77px;
 
-}
-
-.layoutWrapper .navContainer {
+.navContainer {
   @include centered;
   position: fixed;
   bottom: 16px;
   left: 0;
   right: 0;
 
+  header {
+    display: none;
+  }
+
   @include screen-md {
+    height: $nav-height;
     top: 0;
     bottom: unset;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 32px;
+    background: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    border-bottom: 1px solid var(--color-outline);
+
+    header {
+      display: block;
+      font-size: 24px;
+    }
   }
+
 }
 
 .content {
   padding-bottom: 84px;
+
+  @include screen-md {
+    padding-bottom: 0;
+    margin-top: $nav-height;
+  }
 }

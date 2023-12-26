@@ -16,23 +16,10 @@ export default function LayoutWrapper({
     return (
         <div className={classNames(poppins.className, styles.layoutWrapper)}>
             <div className={styles.navContainer}>
+                <header>Noon Posts</header>
                 <Navbar />
             </div>
-            <div className={styles.content}>
-                {Array(100)
-                    .fill(0)
-                    .map((_, i) => (
-                        <div
-                            key={i}
-                            style={{
-                                height: 100,
-                                width: 100,
-                                backgroundColor: "red",
-                            }}
-                        />
-                    ))}
-                {children}
-            </div>
+            <div className={styles.content}>{children}</div>
         </div>
     );
 }
