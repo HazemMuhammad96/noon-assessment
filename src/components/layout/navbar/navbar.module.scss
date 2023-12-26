@@ -24,6 +24,11 @@
     gap: 4px;
     isolation: isolate;
   }
+
+  @include screen-md {
+    border-radius: 12px;
+    border-width: 1px;
+  }
 }
 
 .navIndicator,
@@ -43,6 +48,10 @@
   * {
     pointer-events: none;
   }
+
+  @include screen-md {
+    border-radius: 6px;
+  }
 }
 
 .navIndicator {
@@ -52,6 +61,8 @@
   color: transparent;
   pointer-events: none;
   z-index: -1;
+
+
 }
 
 .navItem {
