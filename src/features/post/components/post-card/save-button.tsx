@@ -1,6 +1,7 @@
 import type { SaveButtonProps } from "./types";
 import { SaveAddIcon, SaveRemoveIcon } from "@/assets/icons";
 import classNames from "classnames";
+import IconButton from "@components/icon-button";
 
 export default function SaveButton({ liked, count, onClick }: SaveButtonProps) {
     return (
@@ -13,7 +14,7 @@ export default function SaveButton({ liked, count, onClick }: SaveButtonProps) {
             >
                 {count > 99 ? "99+" : count}
             </span>
-            <button className="centered rounded-full p-2" onClick={onClick}>
+            <IconButton onClick={onClick}>
                 {liked ? (
                     <SaveRemoveIcon
                         variant="Bold"
@@ -22,7 +23,7 @@ export default function SaveButton({ liked, count, onClick }: SaveButtonProps) {
                 ) : (
                     <SaveAddIcon />
                 )}
-            </button>
+            </IconButton>
         </div>
     );
 }

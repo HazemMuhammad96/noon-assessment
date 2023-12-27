@@ -1,0 +1,18 @@
+@use 'src/assets/styles'as *;
+
+.iconButton {
+  @include centered;
+  border-radius: 50px;
+  padding: 8px;
+  transition: all 0.2s ease-in-out;
+  scale: 1;
+
+  &:hover {
+    background-color: var(--color-primary);
+  }
+
+  &:active {
+    filter: brightness(0.9);
+    scale: 0.9;
+  }
+}
