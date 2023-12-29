@@ -8,7 +8,7 @@ export default class PostsRepository {
         const savedPostsIds: string[] = JSON.parse(
             getCookie("SAVED_POSTS", configs) ?? "[]"
         );
-        const posts = allPosts.map((post: Post) => ({
+        const posts = allPosts.data.map((post: Post) => ({
             ...post,
             isLiked: savedPostsIds.includes(post.id.toString()),
         }));
