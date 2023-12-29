@@ -9,6 +9,14 @@ interface PostResponse {
     data: Post[];
 }
 
+const getFilteredPosts = (posts: Post[], includePosts: string) => {
+    if (!includePosts) return posts;
+    const includedPosts: number[] = includePosts
+        .split(",")
+        .map((id) => Number(id));
+    return posts.filter((post) => includedPosts.includes(post.id));
+};
+
 const getPaginatedPosts = (
     posts: Post[],
     page: number = 1,
@@ -28,7 +36,7 @@ export default function handler(
 ) {
     res.status(200).json(
         getPaginatedPosts(
-            mockPosts,
+            getFilteredPosts(mockPosts, req.query.include as string),
             Number(req.query.page ?? 1),
             Number(req.query.limit ?? 10)
         )
