@@ -4,7 +4,7 @@ import SaveButton from "./save-button";
 import UserInformation from "@features/post/components/post-card/user-information";
 import PostBody from "@features/post/components/post-card/post-body";
 
-export default function PostCard({ post }: PostCardProps) {
+export default function PostCard({ post, onSaveClicked }: PostCardProps) {
     return (
         <div className={styles.postCard}>
             <UserInformation user={post.user} />
@@ -12,11 +12,11 @@ export default function PostCard({ post }: PostCardProps) {
                 <img src={post.image} alt={post.imageAlt} />
                 <div className={styles.imageInformationShadow} />
                 <p>{post.title}</p>
-                <strong>{post.formattedPrice}</strong>
+                <strong>{post.description}</strong>
                 <SaveButton
                     liked={post.isLiked}
-                    count={post.likeCount}
-                    onClick={() => {}}
+                    count={post.likes}
+                    onClick={() => onSaveClicked(post.id, !post.isLiked)}
                 />
             </div>
             <PostBody body={post.body} />

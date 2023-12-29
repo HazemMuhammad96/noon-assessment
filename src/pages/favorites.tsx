@@ -1,7 +1,3 @@
-export default function FavoritesPage() {
-    return (
-        <>
-            <h1>Favorites</h1>
-        </>
-    );
-}
+import FavoritesPage from "@features/favorites/pages/favorites-page/favorites-page";
+
+export default FavoritesPage;

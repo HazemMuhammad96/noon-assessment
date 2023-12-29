@@ -35,6 +35,9 @@
       ],
       "@features/*": [
         "./src/features/*"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
       ]
     }
   },

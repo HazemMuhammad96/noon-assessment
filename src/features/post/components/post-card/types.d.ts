@@ -3,7 +3,7 @@ import User from "../../models/user";
 
 interface PostCardProps {
     post: Post;
-    onLikeClicked: (post: Post, isLiked: boolean) => void;
+    onSaveClicked: (postId: number, shouldSave: boolean) => void;
 }
 
 interface UserInformationProps {
