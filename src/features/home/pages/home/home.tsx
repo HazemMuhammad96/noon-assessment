@@ -1,9 +1,6 @@
-import mockPosts from "@/mocks/posts";
-import { PostCard } from "@features/post";
+import { Post, PostCard } from "@features/post";
 
-export default function HomePage() {
-    const posts = mockPosts;
-
+export default function HomePage({ posts }: { posts: Post[] }) {
     return (
         <main>
             <ul
