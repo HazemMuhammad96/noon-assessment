@@ -1,25 +1,12 @@
 import NavItem from "./nav-item";
-import { HomeIcon, SaveIcon } from "@/assets/icons";
 import styles from "./navbar.module.scss";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import appConfigs from "@configs";
+import { Routes } from "./types";
 
 export default function Navbar() {
-    const routes: {
-        [key: string]: {
-            label: string;
-            icon: React.ReactNode;
-        };
-    } = {
-        "/": {
-            label: "Home",
-            icon: <HomeIcon />,
-        },
-        "/favorites": {
-            label: "Favorites",
-            icon: <SaveIcon />,
-        },
-    };
+    const routes: Routes = appConfigs.navRoutes;
     const { pathname } = useRouter();
     const [startOffset, setStartOffset] = useState(6);
     const [scalingPosition, setScalingPosition] = useState<string | undefined>(

@@ -19,7 +19,7 @@
     "incremental": true,
     "paths": {
       "@configs": [
-        "./src/lib/app-configs.ts"
+        "./src/lib/app-configs.tsx"
       ],
       "@/*": [
         "./src/*"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./navbar.module.scss";
+import {NavItemProps} from "./types";
 
 export default function NavItem(props: NavItemProps) {
     return (
