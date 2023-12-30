@@ -5,7 +5,7 @@ export default function StoreProvider({
     children,
     pageProps,
 }: {
-    pageProps: { [key: string]: any };
+    pageProps: { [_: string]: any };
     children: React.ReactNode;
 }) {
     const { store } = wrapper.useWrappedStore({ ...pageProps });

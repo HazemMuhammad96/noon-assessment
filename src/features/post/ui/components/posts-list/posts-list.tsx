@@ -10,7 +10,7 @@ export default function PostsList(props: PostsListProps) {
                     maxWidth: "650px",
                 }}
             >
-                {props.posts.map((post, i) => (
+                {props.posts.map((post) => (
                     <li key={post.id}>
                         <PostCard
                             post={post}
