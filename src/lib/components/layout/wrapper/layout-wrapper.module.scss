@@ -8,10 +8,10 @@ $nav-height: 77px;
   bottom: 16px;
   left: 0;
   right: 0;
+  z-index: 10;
 
   header {
     display: none;
-    z-index: 10;
   }
 
   @include screen-md {
