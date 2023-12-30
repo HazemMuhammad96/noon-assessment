@@ -5,7 +5,6 @@ function TagLink({ tag }: { tag: string }) {
     return (
         <Link
             className="text-secondary"
-            key={tag}
             href={`/search?query=${encodeURIComponent(tag.slice(1))}`}
         >
             {tag}{" "}
@@ -20,7 +19,7 @@ export default function useFormattedBody(body: string) {
             (cumulativeParts, part, index) => {
                 const prevPart = cumulativeParts.at(-1);
                 if (part.startsWith("#")) {
-                    cumulativeParts.push(<TagLink tag={part} />);
+                    cumulativeParts.push(<TagLink tag={part} key={index} />);
                 } else if (typeof prevPart !== "string" || index === 0) {
                     cumulativeParts.push(part);
                 } else {

@@ -1,24 +1,23 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Post, PostsRepository } from "@features/post";
+import { Post } from "@features/post";
 import { createServerSideStateGetter, useAppSelector } from "@lib/state";
 import { HYDRATE } from "next-redux-wrapper";
+import SavedPostsRepository from "../../data/repositories/saved-posts-repository";
 
 interface HomeState {
     loading: boolean;
     posts: Post[];
-    errors: any;
 }
 
 const initialState: HomeState = {
     loading: true,
     posts: [],
-    errors: null,
 };
 
 const fetchSavedPosts = createAsyncThunk(
     "favorites/fetch",
     async (args: any = {}) => {
-        return await PostsRepository.getSaved(args.config);
+        return await SavedPostsRepository.getSaved(args.config);
     }
 );
 
@@ -29,7 +28,7 @@ export const favoritesSlice = createSlice({
         removeSaved: (state, action) => {
             const { postId } = action.payload;
             state.posts = state.posts.filter((post) => post.id !== postId);
-            PostsRepository.updateSave(postId, false);
+            SavedPostsRepository.unSave(postId);
         },
     },
     extraReducers: (builder) => {
@@ -49,6 +48,7 @@ export const favoritesSlice = createSlice({
 
 export const useFavoritesState = () =>
     useAppSelector((state) => state.favorites);
+
 export const favoritesActions = {
     ...favoritesSlice.actions,
     fetchSavedPosts,

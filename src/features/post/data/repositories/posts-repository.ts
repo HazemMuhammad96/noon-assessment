@@ -4,8 +4,18 @@ import { Params } from "@lib/types/repository";
 import appConfigs from "@configs";
 
 export default class PostsRepository {
-    private static getSavedPostsIds(configs?: Params): Number[] {
-        return JSON.parse(getCookie("SAVED_POSTS", configs) ?? "[]");
+    private static COOKIE_NAME = "SAVED_POSTS";
+
+    protected static getSavedPostsIds(configs?: Params): Number[] {
+        return JSON.parse(getCookie(this.COOKIE_NAME, configs) ?? "[]");
+    }
+
+    private static combinePostsWithSaved(allPosts: Post[], configs?: Params) {
+        const savedPostsIds = this.getSavedPostsIds(configs);
+        return allPosts.map((post: Post) => ({
+            ...post,
+            isLiked: savedPostsIds.includes(post.id),
+        }));
     }
 
     static async getAll(
@@ -18,21 +28,7 @@ export default class PostsRepository {
         }
         const response = await fetch(url.href);
         const jsonResponse = await response.json();
-        const savedPostsIds = this.getSavedPostsIds(configs);
-        const posts = jsonResponse.map((post: Post) => ({
-            ...post,
-            isLiked: savedPostsIds.includes(post.id),
-        }));
-        return posts;
-    }
-
-    static async getSaved(configs?: any): Promise<Array<Post>> {
-        return this.getAll(
-            {
-                include: this.getSavedPostsIds(configs).join(",") || ",",
-            },
-            configs
-        );
+        return this.combinePostsWithSaved(jsonResponse, configs);
     }
 
     private static save(postId: number, configs?: Params) {
@@ -41,15 +37,15 @@ export default class PostsRepository {
             ...savedPostsIds,
             postId,
         ]);
-        setCookie("SAVED_POSTS", stringifiedSavedPostsIds, configs);
+        setCookie(this.COOKIE_NAME, stringifiedSavedPostsIds, configs);
     }
 
-    private static unSave(postId: number, configs?: Params) {
+    static unSave(postId: number, configs?: Params) {
         const savedPostsIds = this.getSavedPostsIds(configs);
         const stringifiedSavedPostsIds = JSON.stringify(
             savedPostsIds.filter((id: any) => id !== postId)
         );
-        setCookie("SAVED_POSTS", stringifiedSavedPostsIds, configs);
+        setCookie(this.COOKIE_NAME, stringifiedSavedPostsIds, configs);
     }
 
     static updateSave(postId: number, shouldSave: boolean, configs?: Params) {

@@ -6,13 +6,11 @@ import { HYDRATE } from "next-redux-wrapper";
 interface HomeState {
     loading: boolean;
     posts: Post[];
-    errors: any;
 }
 
 const initialState: HomeState = {
     loading: true,
     posts: [],
-    errors: null,
 };
 
 const fetchPosts = createAsyncThunk("posts/fetch", async (args: any) => {
@@ -48,6 +46,7 @@ export const homeSlice = createSlice({
 });
 
 export const useHomeState = () => useAppSelector((state) => state.home);
+
 export const homeActions = {
     ...homeSlice.actions,
     fetchPosts,

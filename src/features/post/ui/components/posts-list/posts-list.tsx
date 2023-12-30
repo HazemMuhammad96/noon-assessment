@@ -1,15 +1,13 @@
 import { PostCard } from "@features/post";
 import { PostsListProps } from "./types";
+import styles from "./posts-list.module.scss";
+import LoadingIndicator from "@components/loading-indicator";
 
 export default function PostsList(props: PostsListProps) {
     return (
         <main>
-            <ul
-                style={{
-                    marginInline: "auto",
-                    maxWidth: "650px",
-                }}
-            >
+            {props.loading && <LoadingIndicator />}
+            <ul className={styles.list}>
                 {props.posts.map((post) => (
                     <li key={post.id}>
                         <PostCard
