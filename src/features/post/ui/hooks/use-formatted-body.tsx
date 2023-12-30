@@ -1,17 +1,13 @@
 import { useMemo } from "react";
 import Link from "next/link";
 
-function TagLink({ tag }: { tag: string }) {
-    return (
-        <Link
-            className="text-secondary"
-            href={`/search?query=${encodeURIComponent(tag.slice(1))}`}
-        >
-            {tag}{" "}
-        </Link>
-    );
-}
-
+/**
+ * @param body - The body of the post
+ * @case - tag: return a Link to the search page for that tag
+ * @case - string: append the string to the previous string to avoid unnecessary react nodes
+ * @case - first string: return the string
+ * @returns An array of React nodes that represent the body of the post
+ * */
 export default function useFormattedBody(body: string) {
     return useMemo(() => {
         const bodyParts = body.split(" ");
@@ -32,4 +28,15 @@ export default function useFormattedBody(body: string) {
             []
         );
     }, [body]);
+}
+
+function TagLink({ tag }: { tag: string }) {
+    return (
+        <Link
+            className="text-secondary"
+            href={`/search?query=${encodeURIComponent(tag.slice(1))}`}
+        >
+            {tag}{" "}
+        </Link>
+    );
 }
