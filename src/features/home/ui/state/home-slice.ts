@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Post, PostsRepository } from "@features/post";
 import { createServerSideStateGetter, useAppSelector } from "@lib/state";
 import { HYDRATE } from "next-redux-wrapper";
@@ -16,9 +16,7 @@ const initialState: HomeState = {
 };
 
 const fetchPosts = createAsyncThunk("posts/fetch", async (args: any) => {
-    return await PostsRepository.getAll({
-        ...args?.config,
-    });
+    return await PostsRepository.getAll({}, args?.config);
 });
 
 export const homeSlice = createSlice({
@@ -42,8 +40,9 @@ export const homeSlice = createSlice({
             state.loading = false;
             state.posts = action.payload;
         });
-        builder.addCase(HYDRATE, (state, action: any) => {
-            return action.payload.home;
+        builder.addCase(HYDRATE, (_, action: AnyAction) => {
+            if (action.payload.home.posts.length > 0)
+                return action.payload.home;
         });
     },
 });

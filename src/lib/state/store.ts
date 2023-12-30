@@ -1,13 +1,13 @@
 import { createWrapper } from "next-redux-wrapper";
 import { configureStore } from "@reduxjs/toolkit";
-import { homeSlice } from "@features/home/state/home-slice";
-import { favoritesSlice } from "@features/favorites/pages/state/favorites-slice";
+import { HomeSlice } from "@features/home";
+import { FavoritesSlice } from "@features/favorites";
 
 const makeStore = () =>
     configureStore({
         reducer: {
-            home: homeSlice.reducer,
-            favorites: favoritesSlice.reducer,
+            home: HomeSlice.reducer,
+            favorites: FavoritesSlice.reducer,
         },
         devTools: true,
     });

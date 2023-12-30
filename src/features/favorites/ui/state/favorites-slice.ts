@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Post, PostsRepository } from "@features/post";
 import { createServerSideStateGetter, useAppSelector } from "@lib/state";
 import { HYDRATE } from "next-redux-wrapper";
@@ -40,8 +40,9 @@ export const favoritesSlice = createSlice({
             state.loading = false;
             state.posts = action.payload;
         });
-        builder.addCase(HYDRATE, (state, action) => {
-            return action.payload.favorites;
+        builder.addCase(HYDRATE, (_, action: AnyAction) => {
+            if (action.payload.favorites.posts.length > 0)
+                return action.payload.favorites;
         });
     },
 });

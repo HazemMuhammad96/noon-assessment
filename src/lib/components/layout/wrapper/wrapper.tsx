@@ -1,4 +1,4 @@
-import Navbar from "@components/layout/navbar/navbar";
+import Navbar from "../navbar";
 import { Poppins } from "next/font/google";
 import styles from "./layout-wrapper.module.scss";
 import classNames from "classnames";
@@ -15,6 +15,9 @@ export default function LayoutWrapper({
 }) {
     return (
         <div className={classNames(poppins.className, styles.layoutWrapper)}>
+            <div className={styles.mobileNav}>
+                <header>Noon Posts</header>
+            </div>
             <div className={styles.navContainer}>
                 <header>Noon Posts</header>
                 <Navbar />

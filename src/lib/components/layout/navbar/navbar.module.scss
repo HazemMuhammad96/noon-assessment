@@ -1,10 +1,4 @@
-@use "../../../assets/styles" as *;
-
-.nav {
-  //--border-size: 2.5px;
-  //--padding-inline: calc(14px - var(--border-size));
-  //--padding-block: calc(6px - var(--border-size));
-}
+@use "src/assets/styles" as *;
 
 .nav > * {
   transition: all 0.2s ease-in-out;
@@ -14,6 +8,7 @@
   @include row(center);
   width: fit-content;
   background: var(--color-surface);
+  color: var(--color-on-surface);
   padding: 6px;
   border: 2px solid var(--color-outline);
   border-radius: 32px;

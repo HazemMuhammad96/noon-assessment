@@ -1,12 +1,12 @@
-import { Post, PostsList } from "@features/post";
+import { PostsList } from "@features/post";
 import { useAppDispatch } from "@lib/state";
 import {
     favoritesActions,
     useFavoritesState,
-} from "@features/favorites/pages/state/favorites-slice";
-import EmptySavedMessage from "@features/favorites/components/empty-saved-message";
+} from "../../state/favorites-slice";
+import EmptySavedMessage from "../../components/empty-saved-message";
 
-export default function FavoritesPage({ posts }: { posts: Post[] }) {
+export default function FavoritesPage() {
     const favoritesState = useFavoritesState();
     const dispatch = useAppDispatch();
     return (

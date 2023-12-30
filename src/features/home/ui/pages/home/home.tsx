@@ -1,5 +1,5 @@
 import { PostsList } from "@features/post";
-import { homeActions, useHomeState } from "@features/home/state/home-slice";
+import { homeActions, useHomeState } from "../../state/home-slice";
 import { useAppDispatch } from "@lib/state";
 
 export default function HomePage() {
