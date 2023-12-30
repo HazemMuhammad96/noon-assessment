@@ -1,35 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Post, PostsRepository } from "@features/post";
-import { useAppSelector } from "@lib/state";
+import { createServerSideStateGetter, useAppSelector } from "@lib/state";
 import { HYDRATE } from "next-redux-wrapper";
-// @ts-ignore
-import type { GetThunkAPI } from "@reduxjs/toolkit/src/createAsyncThunk";
 
 interface HomeState {
     loading: boolean;
     posts: Post[];
     errors: any;
-    count: number;
-    page: number;
 }
 
 const initialState: HomeState = {
     loading: true,
     posts: [],
-    count: 0,
     errors: null,
-    page: 0,
 };
 
-const fetchPosts = createAsyncThunk(
-    "posts/fetch",
-    async (args: any, getThunkApi: GetThunkAPI) => {
-        return await PostsRepository.getAll({
-            ...args?.config,
-            page: getThunkApi.getState().home.page + 1,
-        });
-    }
-);
+const fetchPosts = createAsyncThunk("posts/fetch", async (args: any) => {
+    return await PostsRepository.getAll({
+        ...args?.config,
+    });
+});
 
 export const homeSlice = createSlice({
     name: "homeSlice",
@@ -50,32 +40,21 @@ export const homeSlice = createSlice({
         });
         builder.addCase(fetchPosts.fulfilled, (state, action: any) => {
             state.loading = false;
-            if (state.page !== action.payload["page"])
-                state.posts.push(...action.payload["data"]);
-            state.count = action.payload["count"];
-            state.page = action.payload["page"];
+            state.posts = action.payload;
         });
-        builder.addCase(fetchPosts.rejected, (state, action) => {
-            state.loading = false;
-            state.errors = action.error;
+        builder.addCase(HYDRATE, (state, action: any) => {
+            return action.payload.home;
         });
-        builder.addCase(HYDRATE, (state, action) => {
-            console.log("hydrateeeeeeeeeeeeeeed");
-        });
-        // [fetchPosts.rejected]: (state, error) => {},
-        // [HYDRATE]: (state, action) => {
-        //     return {
-        //         ...state,
-        //         ...action.payload.chapters,
-        //         items: action.payload.chapters.items.map((it) =>
-        //             Chapter.fromDTO(it)
-        //         ),
-        //     };
-        // },
     },
 });
 
 export const useHomeState = () => useAppSelector((state) => state.home);
-export const homeActions = { ...homeSlice.actions, fetchPosts };
+export const homeActions = {
+    ...homeSlice.actions,
+    fetchPosts,
+    getServerSideState: createServerSideStateGetter(async (store, config) => {
+        await store.dispatch(fetchPosts({ config }));
+    }),
+};
 
 export default homeSlice.reducer;

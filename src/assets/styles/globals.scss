@@ -2,12 +2,28 @@
 @use "utils" as *;
 
 .material-symbols-outlined {
-    @include centered;
+  @include centered;
   max-width: 32px;
-    font-variation-settings:
-        "FILL" 0,
-        "wght" 100,
-        "GRAD" 200,
-        "opsz" 24;
+  font-variation-settings: "FILL" 0,
+  "wght" 100,
+  "GRAD" 200,
+  "opsz" 24;
 }
 
+html {
+  overflow-y: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary)
+}

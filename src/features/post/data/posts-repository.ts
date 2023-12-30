@@ -13,18 +13,11 @@ export default class PostsRepository {
         const response = await fetch(url.href);
         const jsonResponse = await response.json();
         const savedPostsIds = this.getSavedPostsIds(configs);
-        const posts = jsonResponse.data.map((post: Post) => ({
+        const posts = jsonResponse.map((post: Post) => ({
             ...post,
             isLiked: savedPostsIds.includes(post.id),
         }));
-        console.log({
-            posts,
-        });
-
-        return {
-            ...jsonResponse,
-            data: posts,
-        };
+        return posts;
     }
 
     static async getSaved(configs?: any): Promise<Array<Post>> {

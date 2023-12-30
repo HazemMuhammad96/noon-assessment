@@ -16,10 +16,6 @@ export default function FavoritesPage({ posts }: { posts: Post[] }) {
         <PostsList
             posts={favoritesState.posts}
             loading={favoritesState.loading}
-            onFetch={() =>
-                dispatch(favoritesActions.fetchSavedPosts(undefined))
-            }
-            count={favoritesState.count}
             onToggleSave={(postId) => {
                 dispatch(
                     favoritesActions.removeSaved({
