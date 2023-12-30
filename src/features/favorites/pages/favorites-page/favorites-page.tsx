@@ -8,10 +8,6 @@ import {
 export default function FavoritesPage({ posts }: { posts: Post[] }) {
     const favoritesState = useFavoritesState();
     const dispatch = useAppDispatch();
-
-    console.log({
-        favoritesState,
-    });
     return (
         <PostsList
             posts={favoritesState.posts}

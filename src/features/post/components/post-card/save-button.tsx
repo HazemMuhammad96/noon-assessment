@@ -4,15 +4,18 @@ import classNames from "classnames";
 import IconButton from "@components/icon-button";
 
 export default function SaveButton({ liked, count, onClick }: SaveButtonProps) {
+    const actualCount = count + Number(liked);
     return (
         <div className="row" aria-label="likes">
             <span
                 className={classNames({
                     "text-primary-container": liked,
                 })}
-                title={count > 99 ? `${count} likes` : undefined}
+                title={`${count} likes`}
             >
-                {count > 99 ? "99+" : count}
+                {Intl.NumberFormat("en-US", {
+                    notation: "compact",
+                }).format(actualCount)}
             </span>
             <IconButton onClick={onClick}>
                 {liked ? (
