@@ -3,11 +3,11 @@ import { Provider } from "react-redux";
 
 export default function StoreProvider({
     children,
-    ...rest
+    pageProps,
 }: {
-    children: any;
-    [key: string]: any;
+    pageProps: { [key: string]: any };
+    children: React.ReactNode;
 }) {
-    const { store, props } = wrapper.useWrappedStore(rest);
+    const { store } = wrapper.useWrappedStore({ ...pageProps });
     return <Provider store={store}>{children}</Provider>;
 }

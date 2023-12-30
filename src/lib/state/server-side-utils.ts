@@ -1,25 +1,9 @@
-import { AppStore, wrapper } from "./store";
+import {  wrapper } from "./store";
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
-import type {
-    EnhancedStore,
-    StoreEnhancer,
-    ThunkDispatch,
-    UnknownAction,
-} from "@reduxjs/toolkit";
-import { Tuple } from "@reduxjs/toolkit";
+import {Store} from "./types";
 
-type Store = EnhancedStore<
-    AppStore,
-    UnknownAction,
-    Tuple<
-        [
-            StoreEnhancer<{
-                dispatch: ThunkDispatch<AppStore, undefined, UnknownAction>;
-            }>,
-            StoreEnhancer,
-        ]
-    >
->;
+
+
 export const createServerSideStateGetter =
     (
         callback: (

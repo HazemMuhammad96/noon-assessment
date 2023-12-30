@@ -2,22 +2,19 @@ import type { AppProps } from "next/app";
 import LayoutWrapper from "@components/layout/wrapper";
 import "@styles/globals.scss";
 import Head from "next/head";
-import { wrapper } from "@lib/state/store";
-import {Provider} from "react-redux";
+import StoreProvider from "@lib/state/provider";
 
 export default function App({ Component, pageProps }: AppProps) {
-    const { store, props } = wrapper.useWrappedStore({ ...pageProps });
-
     return (
         <>
             <Head>
                 <title>Posts</title>
             </Head>
-            <Provider store={store}>
+            <StoreProvider pageProps={pageProps}>
                 <LayoutWrapper>
-                    <Component {...props} />
+                    <Component {...pageProps} />
                 </LayoutWrapper>
-            </Provider>
+            </StoreProvider>
         </>
     );
 }
