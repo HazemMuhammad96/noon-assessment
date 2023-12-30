@@ -12,9 +12,7 @@ const makeStore = () =>
         devTools: true,
     });
 
-export const wrapper = createWrapper(makeStore, {
-    debug: true,
-});
+export const wrapper = createWrapper(makeStore);
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<AppStore["getState"]>;

@@ -10,7 +10,7 @@
   flex-direction: row-reverse;
 }
 
-@mixin column($main-axis: flex-start, $cross-axis: flex-start) {
+@mixin column($main-axis: center, $cross-axis: flex-start) {
   display: flex;
   flex-direction: column;
   justify-content: $cross-axis;

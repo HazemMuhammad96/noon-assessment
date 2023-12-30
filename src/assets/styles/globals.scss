@@ -14,11 +14,10 @@ html {
   overflow-y: scroll;
 }
 
-/* width */
 ::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
 }
-
 
 ::-webkit-scrollbar-track {
   background: var(--color-background);

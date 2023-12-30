@@ -40,7 +40,6 @@ export default function Navbar() {
         return childOffsetToParent;
     };
     const onNavigating = (e: any, i: number) => {
-        console.log(e.target);
         const navigatingTo = e.target.pathname;
         if (pathname === navigatingTo) {
             return;

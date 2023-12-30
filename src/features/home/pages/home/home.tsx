@@ -6,9 +6,6 @@ export default function HomePage() {
     const homeState = useHomeState();
     const dispatch = useAppDispatch();
 
-    console.log({
-        homeState,
-    });
     return (
         <PostsList
             posts={homeState.posts}

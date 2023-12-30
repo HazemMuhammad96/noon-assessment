@@ -1,0 +1,53 @@
+@use "src/assets/styles" as *;
+
+.emptySavedMessage {
+  @include column(center, center);
+  width: 100%;
+  height: 85vh;
+  color: var(--color-primary);
+
+
+  .iconContainer {
+    @include centered;
+    opacity: 50%;
+    border: 6px solid var(--color-primary);
+    padding: 30px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-bottom: 24px;
+
+    svg {
+      width: 70px;
+      height: 70px;
+    }
+
+    @include screen-md {
+      padding: 60px;
+      svg {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 500;
+
+    @include screen-md {
+      font-size: 32px;
+    }
+  }
+
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 8px;
+
+    @include screen-md {
+      font-size: 18px;
+    }
+  }
+}
+

@@ -1,5 +1,5 @@
-import Post from "../../models/post";
-import User from "../../models/user";
+import Post from "@features/post/domain/models/post";
+import User from "@features/post/domain/models/user";
 
 interface PostCardProps {
     post: Post;
