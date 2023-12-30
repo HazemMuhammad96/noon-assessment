@@ -18,6 +18,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@configs": [
+        "./src/lib/app-configs.ts"
+      ],
       "@/*": [
         "./src/*"
       ],

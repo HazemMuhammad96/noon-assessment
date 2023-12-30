@@ -40,6 +40,8 @@ $inline-padding: 12px;
     grid-column: 2/3;
     grid-row: 3/4;
     margin-bottom: 12px;
+    font-weight: 500;
+    opacity: 0.8;
   }
 
   [aria-label="likes"] {
@@ -54,6 +56,6 @@ $inline-padding: 12px;
   .imageInformationShadow {
     grid-column: 1/5;
     grid-row: 1/4;
-    background: linear-gradient(0deg, rgba(66, 62, 0, 0.8) 0%, rgba(255, 255, 255, 0) 50%);
+    background: linear-gradient(0deg, rgba(58, 56, 35, 0.8) 0%, rgba(255, 255, 255, 0) 50%);
   }
 }

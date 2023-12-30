@@ -26,7 +26,7 @@ const mockPosts: Post[] = [
         id: 1,
         user: user1,
         title: "Leaf iPhone Case Hard Plastic",
-        body: "This is a hard plastic case for the iPhone 11 Pro Max. It is a leaf design and is in great condition.\n#iphone #cases #mobile_phones",
+        body: "This is a hard plastic case for the iPhone 11 Pro Max. It is a leaf design and is in great condition. #iphone #cases #mobile_phones",
         image: "https://images.unsplash.com/photo-1535157412991-2ef801c1748b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         imageAlt: "iPhone case",
         commentCount: 12,

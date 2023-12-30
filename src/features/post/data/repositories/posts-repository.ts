@@ -1,6 +1,7 @@
 import { getCookie, setCookie } from "cookies-next";
 import { Post } from "@features/post";
 import { Params } from "@lib/types/repository";
+import appConfigs from "@configs";
 
 export default class PostsRepository {
     private static getSavedPostsIds(configs?: Params): Number[] {
@@ -11,8 +12,10 @@ export default class PostsRepository {
         params: Params,
         configs?: Params
     ): Promise<Array<Post>> {
-        const url = new URL("http://localhost:3000/api/posts");
-        url.searchParams.append("include", params["include"] ?? "");
+        const url = new URL(`${appConfigs.apiBaseUrl}/posts`);
+        if (params) {
+            url.searchParams.append("include", params["include"] ?? "");
+        }
         const response = await fetch(url.href);
         const jsonResponse = await response.json();
         const savedPostsIds = this.getSavedPostsIds(configs);
