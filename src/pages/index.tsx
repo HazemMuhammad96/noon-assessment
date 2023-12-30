@@ -1,4 +1,4 @@
-import { HomePage, homeActions } from "@features/home";
+import { homeActions, HomePage } from "@features/home";
 
 export const getServerSideProps = homeActions.getServerSideState();
 

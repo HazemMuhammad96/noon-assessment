@@ -1,8 +1,8 @@
 import styles from "./post-card.module.scss";
 import type { PostCardProps } from "./types";
 import SaveButton from "./save-button";
-import UserInformation from "@features/post/ui/components/post-card/user-information";
-import PostBody from "@features/post/ui/components/post-card/post-body";
+import UserInformation from "./user-information";
+import PostBody from "./post-body";
 
 export default function PostCard({ post, onSaveClicked }: PostCardProps) {
     return (

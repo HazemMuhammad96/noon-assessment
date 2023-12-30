@@ -1,8 +1,6 @@
-import {  wrapper } from "./store";
+import { wrapper } from "./store";
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
-import {Store} from "./types";
-
-
+import { Store } from "./types";
 
 export const createServerSideStateGetter =
     (

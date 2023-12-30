@@ -5,7 +5,7 @@ export default function EmptySavedMessage() {
     return (
         <main className={styles.emptySavedMessage}>
             <div className={styles.iconContainer}>
-                <SaveEmptyIcon  />
+                <SaveEmptyIcon />
             </div>
             <h1>No saved posts</h1>
             <p>Save a post to see it here</p>

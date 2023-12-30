@@ -11,7 +11,9 @@ export default function UserInformation({ user }: UserInformationProps) {
                 width={40}
                 height={40}
             />
-            <Link href={`users/${user.id}`} className="text-secondary">{user.name}</Link>
+            <Link href={`users/${user.id}`} className="text-secondary">
+                {user.name}
+            </Link>
         </div>
     );
 }

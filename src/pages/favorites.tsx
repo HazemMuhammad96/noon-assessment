@@ -1,4 +1,4 @@
-import { FavoritesPage, favoritesActions } from "@features/favorites";
+import { favoritesActions, FavoritesPage } from "@features/favorites";
 
 export const getServerSideProps = favoritesActions.getServerSideState();
 
